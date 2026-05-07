@@ -1,3 +1,3 @@
-# Programa com R
+# Programação com R
 
 ## ggplot

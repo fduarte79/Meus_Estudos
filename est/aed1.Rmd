@@ -1,0 +1,38 @@
+---
+title: "AED - Conceitos"
+author: "Felipe Duarte"
+date: "2026-05-10"
+output: html_document
+---
+
+## Dados estruturados x dados não estruturados
+
++ Elementos de dados não estruturados
+   + imagens
+   + textos
+   + clickstreams
++ Elementos de dados estruturados
+   + linhas
+   + linhas x colunas
+
+Dados estruturados
+
++ Numéricos 
+   + Contínuos
+   + Discretos
++ Categóricos
+   + Binários
+   + Ordinais
+
+## Tipos de dados
+
++ Contínuos: qualquer valor em um intervalo numérico. Sinônimos: reais, ponto flutuante, double
++ Discretos: qualquer valor inteiro
++ Categóricos: dados que assumem um conjunto específico de valores que representam um conjunto de categorias
++ Binários: dados categóricos que possuem dois estados: 0/1, verdadeiro/falso, `TRUE`/`FALSE`, on/off, ligado/desligado
++ Ordinadianis: dados categóricos que possui uma ordem
+
+## Dados retangulares
+
+Definição: um Data frame ou quadro de dados são dados retangulares como uma planilha matriz bidimencional com linhas (observação, registro, casos ou amostra) e colunas (variáveis ou atributos). O data frame tem um índice implícito, baseado na ordem. A conclusão é chamada de variável dependente, resposta, alvo.
+

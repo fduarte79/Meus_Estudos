@@ -6,7 +6,7 @@
 
 ## Estimativas de localização
 
-[Média, Mediana, Outliers e outras viariáveis de localização](est/ead2.html)
+[Média, Mediana, Outliers e outras variáveis de localização](est/ead2.html)
 
 ---
 

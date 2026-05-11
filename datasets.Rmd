@@ -1,0 +1,47 @@
+---
+title: "R - Datasets"
+author: "Felipe Duarte"
+date: "2026-05-10"
+output: html_document
+---
+
+### ability.cov
+Testes de Capacidade e Inteligência
+Foram realizados seis testes a 112 indivíduos.
+
+```{r setup, warning = FALSE, error = FALSE}
+ability.cov$cov
+dim(ability.cov$cov)
+```
+
+### BOD
+Demanda Bioquímica de Oxigénio
+A tabela de dados da DBO tem 6 linhas e 2 colunas, apresentando a demanda bioquímica de oxigénio em função do tempo numa avaliação da qualidade da água. 
+
+```{r}
+BOD
+```
+
+### chickwts
+
+Peso dos frangos por tipo de ração, foi realizada uma experiência para medir e comparar a eficácia de vários suplementos alimentares na taxa de crescimento dos frangos. 
+
+```{r}
+dim(chickwts)
+head(chickwts)
+```
+
+### CO2
+
+Absorção de dióxido de carbono em gramíneas
+
+A tabela de dados de CO₂ contém 84 linhas e 5 colunas com dados de uma experiência sobre a tolerância ao frio da espécie de gramínea Echinochloa crus-galli.
+
+```{r}
+dim(CO2)
+head(CO2)
+```
+
+## Referências
+
+[The R Datasets Package](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html)

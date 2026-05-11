@@ -12,4 +12,8 @@
 
 # Programação com R
 
+## Datasets
+
+[Datasets](r/datasets.html)
+
 ## ggplot

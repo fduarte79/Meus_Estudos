@@ -371,8 +371,18 @@ mean = \bar{x} = \frac{1}{N}\sum_{i=1}^{N} x_i
 \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_1 + x_2 + x_3 + x_4 + x_5 + x_6 +
 ... x_n
 \]</span></p>
-<div id="calculando-a-média-do-dataset-bod" class="section level2">
-<h2>Calculando a média do dataset <code>BOD</code></h2>
+<div id="calculando-a-média-da-demanda-bioquímica-de-oxigénio---bod" class="section level2">
+<h2>Calculando a média da Demanda Bioquímica de Oxigénio -
+<code>BOD</code></h2>
+<p>O dataset BOD é uma tabela de dados que possui 6 linhas e 2 colunas,
+apresentando a demanda bioquímica de oxigénio em função do tempo numa
+avaliação da qualidade da água. BOD, possui duas colunas:</p>
+<ul>
+<li><code>time</code> (tempo): um vetor numérico que indica o tempo
+decorrido desde a medição (em dias)</li>
+<li><code>demand</code> (demanda): um vetor numérico que indica a
+demanda bioquímica de oxigénio (mg/l)</li>
+</ul>
 <pre class="r"><code>BOD</code></pre>
 <pre><code>##   Time demand
 ## 1    1    8.3

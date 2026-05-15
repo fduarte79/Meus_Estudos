@@ -1,0 +1,69 @@
+---
+title: "Estatística - Média"
+author: "Felipe Duarte"
+date: "2026-05-15"
+output: html_document
+---
+
+Média (`mean`) representado por $\bar{x}$, e é definido como a soma de todos os valores, dividido pelo número de valores.
+
+$$
+mean = \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
+$$
+n: é o número total de registros ou observações de uma amostra.
+
+Se fosse uma população, seria representado por N
+
+$$
+mean = \bar{x} = \frac{1}{N}\sum_{i=1}^{N} x_i
+$$
+
+$$
+\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_1 + x_2 + x_3 + x_4 + x_5 + x_6 + ... n
+$$
+
+## Calculando a média do dataset `BOD`
+
+```{r setup}
+BOD
+```
+
+### Coluna de demanda (*demand*)
+
+$$
+\bar{x} = \frac{1}{6}\sum_{1}^{6} 8.3 + 10.3 + 19.0 + 16.0 + 15.6 + 19.8
+$$
+$$
+\bar{x} = \frac{89.0}{6} 
+$$
+
+$$
+\bar{x} = 14.83333
+$$
+Usando a função `mean`
+```{r}
+mean(BOD$demand)
+```
+
+### Coluna de tempo (*time*)
+
+$$
+\bar{x} = \frac{1}{6}\sum_{1}^{6} 1 + 2 + 3 + 4 + 5 + 7
+$$ 
+
+$$
+\bar{x} = \frac{1 + 2 + 3 + 4 + 5 + 7}{6}
+$$
+$$
+\bar{x} = \frac{22}{6}
+$$
+$$
+\bar{x} = 3.666667
+$$
+
+```{r}
+mean(BOD$Time)
+```
+
+## Referências
+BRUCE, Peter; BRUCE, Andrew. **Estatística prática para cientistas de dados: 50 conceitos essenciais.** Rio de Janeiro: Alta Books, 2019. 

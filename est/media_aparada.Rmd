@@ -1,0 +1,104 @@
+---
+title: "Estatística - Média aparada"
+author: "Felipe Duarte"
+date: "2026-05-15"
+output: html_document
+---
+
+Média aparada, é a média na qual se calcula excluindo um número fixo de valores selecionados nas extremidades e então, calcula-se a média dos valores restantes.
+
+$$
+Trimmed = \bar{x} = \frac{1}{n - 2p}\sum_{i = p + 1}^{n - p}x(i)
+$$
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Calculando a média aparada dos dados de atitude de Chatterjee–Price
+
+A partir de um inquérito realizado aos funcionários administrativos de uma grande instituição financeira, os dados foram agregados a partir dos questionários preenchidos por cerca de 35 funcionários de cada um dos 30 departamentos (selecionados aleatoriamente). Os números indicam a percentagem de respostas favoráveis a sete perguntas em cada departamento.
+
+```{r}
+attitude
+```
+
+### Calculando a média aparada da coluna advance 
+
+Ordenando a coluna `attitude$advance`
+
+```{r}
+data.frame(sort(attitude$advance))
+```
+
+Aparar os 10% dos menores e maiores valores. 
+0.1 * 30 = 3 números
+
++ *p* = 3
++ *n* = 30
++ 3 menores números (25, 31, 33) 
++ 3 maiores números (60, 63, 72)
+
+$$
+Trimmed = \bar{x} = \frac{1}{n - 2p}\sum_{i = p + 1}^{n - p}x(i)
+$$
+$$
+Trimmed = \bar{x} = \frac{1}{30 - 2*3}\sum_{i = 3+1}^{30 - 3}x(i)
+$$
+$$
+Trimmed = \bar{x} = \frac{1}{24}\sum_{i = 4}^{27} x_4 + x_{5} + x_{6} ... + x_{26} + x_{27} = 33 + 34 + ... + 52 + 55
+$$
+
+```{r}
+p <- length(attitude$advance) - length(attitude$advance) * 0.1 * 2
+sort(attitude$advance)
+somatório <- sum(33, 34, 34, 35, 35, 35, 36, 37, 38, 39, 41, 41, 41, 41, 45, 46, 46, 47, 47, 48, 49, 49, 52, 55)
+somatório / p
+```
+
+Usando a função `mean` com o atributo de 10%
+
+```{r}
+mean(attitude$advance, trim = 0.1)
+```
+
+### Calculando a média aparada da coluna crítico
+
+Ordenando a coluna `attitude$critical`
+
+```{r}
+data.frame(sort(attitude$critical))
+```
+
+Aparar os 20% dos menores e maiores valores. 
+0.2 * 30 = 6 números
+
++ *p* = 6
++ *n* = 30
++ 6 menores números (49, 54, 57, 63, 64, 66) 
++ 6 maiores números (83, 83, 84, 85, 86, 92)
+
+$$
+Trimmed = \bar{x} = \frac{1}{n - 2p}\sum_{i = p + 1}^{n - p}x(i)
+$$
+$$
+Trimmed = \bar{x} = \frac{1}{30 - 2*6}\sum_{i = 6+1}^{30 - 6}x(i)
+$$
+$$
+Trimmed = \bar{x} = \frac{1}{18}\sum_{i = 7}^{24} x_7 + x_{8} + x_{9} ... + x_{26} + x_{27} = 33 + 34 + ... + 80 + 83
+$$
+```{r}
+p <- length(attitude$critical) - length(attitude$critical) * 0.2 * 2
+sort(attitude$critical)
+somatório <- sum(67, 68, 73, 74, 74, 75, 76, 77, 77, 78, 78, 78, 79, 80, 80, 80, 80, 83)
+somatório / p
+```
+
+Usando a função `mean` com o atributo de 20%
+
+```{r}
+mean(attitude$critical, trim = 0.2)
+```
+
+## Referências
+BRUCE, Peter; BRUCE, Andrew. **Estatística prática para cientistas de dados: 50 conceitos essenciais.** Rio de Janeiro: Alta Books, 2019. 

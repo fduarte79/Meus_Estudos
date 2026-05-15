@@ -6,7 +6,8 @@
 
 ## Estimativas de localização
 
-[Média, média aritmética ou valor médio](est/mean.html)
+[Média, média aritmética ou valor médio](est/media.html)
+[Média aparada](est/media_aparada.html)
 
 ---
 

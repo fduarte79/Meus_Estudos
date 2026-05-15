@@ -6,7 +6,7 @@
 
 ## Estimativas de localização
 
-[Média, Mediana, Outliers e outras variáveis de localização](est/aed2.html)
+[Média, média aritmética ou valor médio](est/mean.html)
 
 ---
 

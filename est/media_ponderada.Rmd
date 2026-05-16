@@ -1,0 +1,68 @@
+---
+title: "Estatística - Média ponderada"
+author: "Felipe Duarte"
+date: "2026-05-15"
+output: html_document
+---
+
+Média ponderada, é a média a qual se obtém pela multiplicação de cada valor dado $x_i$ por um peso $w_i$ e dividindo sua somatória pela soma de todos os pesos.
+
+$$
+Weighted = \bar{x}_{w} = \frac{\sum_{i = 1}^{n}x_iw_i}{\sum_{i = 1}^{n}w_i}
+$$
+
+## Calculando a média ponderada da Demanda Bioquímica de Oxigénio - `BOD`
+
+O dataset BOD é uma tabela de dados que possui 6 linhas e 2 colunas, apresentando a demanda bioquímica de oxigénio em função do tempo numa avaliação da qualidade da água. 
+
+BOD, possui duas colunas: 
+
++ `time` (tempo): um vetor numérico que indica o tempo decorrido desde a medição (em dias)
++ `demand` (demanda): um vetor numérico que indica a demanda bioquímica de oxigénio (mg/l)
+
+```{r setup}
+BOD
+```
+
+### Calculando a média ponderada das colunas `Time` x `demand`
+
+Considerando que a coluna de `demand` será a variável $x_i$ e a coluna `Time` será a variável peso $w_i$.
+
+$$
+Weighted = \bar{x}_{w} = \frac{\sum_{i = 1}^{}x_iw_i}{\sum_{i = 1}^{n}w_i}
+$$
+$$
+Weighted = \bar{x}_{w} = \frac{\sum_{i = 1}^{6}x_1w_1 + x_2w_2 + ... + x_5w_5 + x_6w_6}{\sum_{i = 1}^{6}w_1 + w_2 + ... + w_5 + w_6}
+$$
+$$
+Weighted = \bar{x}_{w} = \frac{\sum_{i = 1}^{6}8.3 * 1 + 10.3 * 2 + 19.0 * 3 + 16.0 * 4 + 15.6 * 5 + 19.8 * 7}{\sum_{i = 1}^{6}1 + 2 + 3 + 4 + 5 + 7}
+$$
+
+```{r}
+weighted.mean(BOD$demand, BOD$Time)
+```
+
+## Calculando a média ponderada de determinação do formaldeído das colunas de Hidratos de Carbono e Densidade ótica
+
+Estes dados provêm de uma experiência química destinada a preparar uma curva padrão para a determinação do formaldeído através da adição de ácido cromotrópico e ácido sulfúrico concentrado e da leitura da cor púrpura resultante num espectrofotómetro.
+
+```{r}
+Formaldehyde
+```
+
+### Calculando a média ponderada de determinação do formaldeído das colunas `carb` e `optden`
+
+$$
+Weighted = \bar{x}_{w} = \frac{\sum_{i = 1}^{6}x_1w_1 + x_2w_2 + ... + x_5w_5 + x_6w_6}{\sum_{i = 1}^{6}w_1 + w_2 + ... + w_5 + w_6}
+$$
+$$
+Weighted = \bar{x}_{w} = \frac{\sum_{i = 1}^{6}0.086 * 0.1 + 0.269 * 0.3 + 0.446 * 0.5 + 0.538 * 0.6 + 0.626 * 0.7 + 0.782 * 0.9}{\sum_{i = 1}^{6}0.1 + 0.3 + 0.5 + 0.6 + 0.7 + 0.9}
+$$
+```{r}
+weighted.mean(Formaldehyde$optden, Formaldehyde$carb)
+```
+
+## Referências
+
++ BRUCE, Peter; BRUCE, Andrew. **Estatística prática para cientistas de dados: 50 conceitos essenciais.** Rio de Janeiro: Alta Books, 2019.  
++ R CORE TEAM. Index of /R-manual/R-devel/library/datasets/html. In: The R Manual -- Development Versions. Zurique: ETH Zürich, 2026. Disponível em: https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html. Acesso em: 16 maio 2026.   

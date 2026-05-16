@@ -71,4 +71,5 @@ mean(BOD$Time)
 ```
 
 ## Referências
-BRUCE, Peter; BRUCE, Andrew. **Estatística prática para cientistas de dados: 50 conceitos essenciais.** Rio de Janeiro: Alta Books, 2019. 
++ BRUCE, Peter; BRUCE, Andrew. **Estatística prática para cientistas de dados: 50 conceitos essenciais.** Rio de Janeiro: Alta Books, 2019. 
++ R CORE TEAM. Index of /R-manual/R-devel/library/datasets/html. In: The R Manual -- Development Versions. Zurique: ETH Zürich, 2026. Disponível em: https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html. Acesso em: 16 maio 2026.

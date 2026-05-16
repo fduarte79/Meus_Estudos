@@ -13,7 +13,7 @@
 
 <meta name="date" content="2026-05-15" />
 
-<title>Estatística - Média</title>
+<title>Estatística - Média ponderada</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,33 +350,27 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Estatística - Média</h1>
+<h1 class="title toc-ignore">Estatística - Média ponderada</h1>
 <h4 class="author">Felipe Duarte</h4>
 <h4 class="date">2026-05-15</h4>
 
 </div>
 
 
-<p>Média (<code>mean</code>) representado por <span class="math inline">\(\bar{x}\)</span> e é definido como a soma de todos
-os valores, dividido pelo número de valores.</p>
+<p>Média ponderada, é a média a qual se obtém pela multiplicação de cada
+valor dado <span class="math inline">\(x_i\)</span> por um peso <span class="math inline">\(w_i\)</span> e dividindo sua somatória pela soma
+de todos os pesos.</p>
 <p><span class="math display">\[
-mean = \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
-\]</span> n: é o número total de registros ou observações de uma
-amostra.</p>
-<p>Se fosse uma população, seria representado por N</p>
-<p><span class="math display">\[
-mean = \bar{x} = \frac{1}{N}\sum_{i=1}^{N} x_i
+Weighted = \bar{x}_{w} = \frac{\sum_{i = 1}^{n}x_iw_i}{\sum_{i =
+1}^{n}w_i}
 \]</span></p>
-<p><span class="math display">\[
-\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_1 + x_2 + x_3 + x_4 + x_5 + x_6 +
-... x_n
-\]</span></p>
-<div id="calculando-a-média-da-demanda-bioquímica-de-oxigénio---bod" class="section level2">
-<h2>Calculando a média da Demanda Bioquímica de Oxigénio -
+<div id="calculando-a-média-ponderada-da-demanda-bioquímica-de-oxigénio---bod" class="section level2">
+<h2>Calculando a média ponderada da Demanda Bioquímica de Oxigénio -
 <code>BOD</code></h2>
 <p>O dataset BOD é uma tabela de dados que possui 6 linhas e 2 colunas,
 apresentando a demanda bioquímica de oxigénio em função do tempo numa
-avaliação da qualidade da água. BOD, possui duas colunas:</p>
+avaliação da qualidade da água.</p>
+<p>BOD, possui duas colunas:</p>
 <ul>
 <li><code>time</code> (tempo): um vetor numérico que indica o tempo
 decorrido desde a medição (em dias)</li>
@@ -391,33 +385,55 @@ demanda bioquímica de oxigénio (mg/l)</li>
 ## 4    4   16.0
 ## 5    5   15.6
 ## 6    7   19.8</code></pre>
-<div id="coluna-de-demanda-demand" class="section level3">
-<h3>Coluna de demanda (<em>demand</em>)</h3>
+<div id="calculando-a-média-ponderada-das-colunas-time-x-demand" class="section level3">
+<h3>Calculando a média ponderada das colunas <code>Time</code> x
+<code>demand</code></h3>
+<p>Considerando que a coluna de <code>demand</code> será a variável
+<span class="math inline">\(x_i\)</span> e a coluna <code>Time</code>
+será a variável peso <span class="math inline">\(w_i\)</span>.</p>
 <p><span class="math display">\[
-\bar{x} = \frac{1}{6}\sum_{1}^{6} 8.3 + 10.3 + 19.0 + 16.0 + 15.6 + 19.8
+Weighted = \bar{x}_{w} = \frac{\sum_{i = 1}^{}x_iw_i}{\sum_{i =
+1}^{n}w_i}
 \]</span> <span class="math display">\[
-\bar{x} = \frac{89.0}{6}
+Weighted = \bar{x}_{w} = \frac{\sum_{i = 1}^{6}x_1w_1 + x_2w_2 + ... +
+x_5w_5 + x_6w_6}{\sum_{i = 1}^{6}w_1 + w_2 + ... + w_5 + w_6}
+\]</span> <span class="math display">\[
+Weighted = \bar{x}_{w} = \frac{\sum_{i = 1}^{6}8.3 * 1 + 10.3 * 2 + 19.0
+* 3 + 16.0 * 4 + 15.6 * 5 + 19.8 * 7}{\sum_{i = 1}^{6}1 + 2 + 3 + 4 + 5
++ 7}
 \]</span></p>
-<p><span class="math display">\[
-\bar{x} = 14.83333
-\]</span> Usando a função <code>mean</code></p>
-<pre class="r"><code>mean(BOD$demand)</code></pre>
-<pre><code>## [1] 14.83333</code></pre>
+<pre class="r"><code>weighted.mean(BOD$demand, BOD$Time)</code></pre>
+<pre><code>## [1] 16.65909</code></pre>
 </div>
-<div id="coluna-de-tempo-time" class="section level3">
-<h3>Coluna de tempo (<em>time</em>)</h3>
+</div>
+<div id="calculando-a-média-ponderada-de-determinação-do-formaldeído-das-colunas-de-hidratos-de-carbono-e-densidade-ótica" class="section level2">
+<h2>Calculando a média ponderada de determinação do formaldeído das
+colunas de Hidratos de Carbono e Densidade ótica</h2>
+<p>Estes dados provêm de uma experiência química destinada a preparar
+uma curva padrão para a determinação do formaldeído através da adição de
+ácido cromotrópico e ácido sulfúrico concentrado e da leitura da cor
+púrpura resultante num espectrofotómetro.</p>
+<pre class="r"><code>Formaldehyde</code></pre>
+<pre><code>##   carb optden
+## 1  0.1  0.086
+## 2  0.3  0.269
+## 3  0.5  0.446
+## 4  0.6  0.538
+## 5  0.7  0.626
+## 6  0.9  0.782</code></pre>
+<div id="calculando-a-média-ponderada-de-determinação-do-formaldeído-das-colunas-carb-e-optden" class="section level3">
+<h3>Calculando a média ponderada de determinação do formaldeído das
+colunas <code>carb</code> e <code>optden</code></h3>
 <p><span class="math display">\[
-\bar{x} = \frac{1}{6}\sum_{1}^{6} 1 + 2 + 3 + 4 + 5 + 7
-\]</span></p>
-<p><span class="math display">\[
-\bar{x} = \frac{1 + 2 + 3 + 4 + 5 + 7}{6}
+Weighted = \bar{x}_{w} = \frac{\sum_{i = 1}^{6}x_1w_1 + x_2w_2 + ... +
+x_5w_5 + x_6w_6}{\sum_{i = 1}^{6}w_1 + w_2 + ... + w_5 + w_6}
 \]</span> <span class="math display">\[
-\bar{x} = \frac{22}{6}
-\]</span> <span class="math display">\[
-\bar{x} = 3.666667
+Weighted = \bar{x}_{w} = \frac{\sum_{i = 1}^{6}0.086 * 0.1 + 0.269 * 0.3
++ 0.446 * 0.5 + 0.538 * 0.6 + 0.626 * 0.7 + 0.782 * 0.9}{\sum_{i =
+1}^{6}0.1 + 0.3 + 0.5 + 0.6 + 0.7 + 0.9}
 \]</span></p>
-<pre class="r"><code>mean(BOD$Time)</code></pre>
-<pre><code>## [1] 3.666667</code></pre>
+<pre class="r"><code>weighted.mean(Formaldehyde$optden, Formaldehyde$carb)</code></pre>
+<pre><code>## [1] 0.5732581</code></pre>
 </div>
 </div>
 <div id="referências" class="section level2">
@@ -425,7 +441,8 @@ demanda bioquímica de oxigénio (mg/l)</li>
 <ul>
 <li>BRUCE, Peter; BRUCE, Andrew. <strong>Estatística prática para
 cientistas de dados: 50 conceitos essenciais.</strong> Rio de Janeiro:
-Alta Books, 2019.</li>
+Alta Books, 2019.<br />
+</li>
 <li>R CORE TEAM. Index of /R-manual/R-devel/library/datasets/html. In:
 The R Manual – Development Versions. Zurique: ETH Zürich, 2026.
 Disponível em: <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html" class="uri">https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html</a>.

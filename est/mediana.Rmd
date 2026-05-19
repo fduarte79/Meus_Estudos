@@ -1,0 +1,83 @@
+---
+title: "Estatística - Mediana e estimativas robustas"
+author: "Felipe Duarte"
+date: "2026-05-16"
+output: html_document
+---
+
+Mediana é o número central em uma lista de dados, o valor central se refere como a média dos valores classificando na metade superior e inferior.
+
+De forma análoga a média ponderada temos a mediana ponderada, valor cuja soma dos pesos é igual para a metades superior e inferior.
+
+A mediana é uma estimativa robusta de localização pois não são influenciadas por casos extremos (outliers).
+
+Para encontrar a mediana, deve-se:
+
++ ordenar os dados
++ encontrar a posição central se for impar;
++ fazer a média dos dois valores se a posição central for par (metade inferior e metade superior)
+
+## Calculando a mediana dos dados de medições da qualidade do ar em Nova Iorque 
+
+O dataset `airquality`é um dataset de medições diárias da qualidade do ar em Nova Iorque, de maio a setembro de 1973.
+
+```{r setup, warning=FALSE, error=FALSE}
+dim(airquality)
+head(airquality, n = 10)
+str(airquality)
+```
+
+### Calculando a mediana da coluna `Solar.R`
+
+Para calcular a mediana, deve-se ordenar o elementos em ordem crescente
+
+```{r}
+length(sort(airquality$Solar.R))                                  # obtendo o tamanho do vetor (é par)
+df_ordenado <- data.frame('Solar.R' = sort(airquality$Solar.R))   # ordenando o vetor
+head(df_ordenado)
+```
+
+```{r}
+x <- length(df_ordenado$Solar.R)/2                                # como o vetor é par, dividimos por 2 (73)
+y <- x + 1                                                        # somamos com 1 (74)
+(df_ordenado$Solar.R[x] + df_ordenado$Solar.R[y]) / 2
+```
+
+### Usando a função `median`
+
+```{r}
+median(airquality$Solar.R, na.rm = TRUE)
+```
+
+```{r}
+boxplot(airquality$Solar.R)
+```
+
+### Calculando a mediana da coluna `Ozone`
+
+```{r}
+length(sort(airquality$Ozone))                                  # obtendo o tamanho do vetor (é par)
+df_ordenado <- data.frame('Ozone' = sort(airquality$Ozone))   # ordenando o vetor
+head(df_ordenado)
+```
+
+```{r}
+x <- length(df_ordenado$Ozone)/2                                # como o vetor é par, dividimos por 2 (73)
+y <- x + 1                                                        # somamos com 1 (74)
+(df_ordenado$Ozone[x] + df_ordenado$Ozone[y]) / 2
+```
+
+### Usando a função `median`
+
+```{r}
+median(df_ordenado$Ozone)
+```
+
+```{r}
+boxplot(df_ordenado$Ozone)
+```
+
+## Referências
+
++ BRUCE, Peter; BRUCE, Andrew. **Estatística prática para cientistas de dados: 50 conceitos essenciais.** Rio de Janeiro: Alta Books, 2019.  
++ R CORE TEAM. Index of /R-manual/R-devel/library/datasets/html. In: The R Manual -- Development Versions. Zurique: ETH Zürich, 2026. Disponível em: https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html. Acesso em: 16 maio 2026.   
